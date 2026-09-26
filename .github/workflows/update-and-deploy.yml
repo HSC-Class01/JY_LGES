@@ -1,38 +1,75 @@
-name: Update OpenDART data
+name: Update OpenDART data and deploy dashboard
 
 on:
   schedule:
     - cron: "0 0 1 * *" # 매월 1일 09:00 KST
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "dashboard-config.js"
+      - "data/**"
+      - "scripts/**"
+      - "config/**"
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
-  group: opendart-data-update
+  group: pages
   cancel-in-progress: false
 
 jobs:
-  update-data:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Fetch and analyze OpenDART filings
+
+      - name: Fetch new OpenDART filings
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
-          test -n "$DART_API_KEY" || { echo "DART_API_KEY secret is not configured."; exit 1; }
           python scripts/fetch_opendart.py --start-year 2021
           python scripts/analyze.py
           python -m unittest discover -s tests -v
-      - name: Commit updated data
+
+      - name: Commit newly published data
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A data
-          if [ -d reports ]; then git add -A reports; fi
+          git add data reports
           git diff --cached --quiet || git commit -m "data: update OpenDART filings"
           git push
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare dashboard
+        run: |
+          mkdir -p site/data
+          cp index.html dashboard-config.js site/
+          cp data/dashboard.json site/data/
+
+      - name: Upload dashboard
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
