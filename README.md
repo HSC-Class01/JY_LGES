@@ -10,7 +10,7 @@ LG에너지솔루션(종목코드 `373220`, DART 고유번호 `01515323`)의 202
 - 2021년부터 사업보고서·분기·반기·3분기 연결 재무제표 수집
 - 사업보고서 원문 ZIP, API 원문 JSON, 공시 목록을 GitHub에 누적 보관
 - 매출 성장률, 매출총이익률, 영업이익률, 순이익률, ROA, ROE, 유동·당좌비율, 부채비율, 자산·재고 회전율, DSO, CFO 전환율, CAPEX, FCF 분석
-- 매월 1일 09:00 KST 자동 수집 및 GitHub Pages 재배포
+- 매월 1일 09:00 KST 자동 수집 및 분석 데이터 갱신
 - 모바일 대응 정적 대시보드와 ChatGPT 분석 에이전트용 지침
 
 ## 5분 설정
@@ -19,8 +19,7 @@ LG에너지솔루션(종목코드 `373220`, DART 고유번호 `01515323`)의 202
 2. GitHub Actions 워크플로는 `.github/workflows/update-and-deploy.yml`에 이미 포함되어 있으므로 별도 복사 과정이 필요 없습니다.
 3. 현재 저장소는 `HSC-Class01/JY_LGES`입니다. 로컬에서 새 사본을 올리는 경우에도 이 저장소를 원격으로 사용하세요.
 4. 저장소 **Settings → Secrets and variables → Actions**에 `DART_API_KEY` 이름으로 인증키를 등록합니다. 자세한 내용은 `API_KEY_SETUP.txt`를 확인하세요.
-5. **Settings → Pages → Build and deployment → Source**에서 **GitHub Actions**를 선택합니다.
-6. **Actions → Update OpenDART data and deploy dashboard → Run workflow**를 실행합니다.
+5. **Actions → Update OpenDART data → Run workflow**를 실행합니다. GitHub Pages 설정은 필요하지 않습니다.
 
 GitHub CLI에 로그인되어 있다면 `./publish_to_github.ps1`로 로컬 사본을 `HSC-Class01/JY_LGES`에 올릴 수 있습니다. 인증키는 보안을 위해 이 스크립트가 입력받지 않으며 GitHub Secret 화면에서 직접 등록합니다.
 
@@ -30,9 +29,9 @@ GitHub CLI에 로그인되어 있다면 `./publish_to_github.ps1`로 로컬 사�
 
 `https://lges-financial-lens.snu-chatgpt-5678.chatgpt.site`
 
-GitHub Pages 주소(`https://hsc-class01.github.io/JY_LGES/`)도 자동화 실행 후 사용할 수 있습니다. About에는 위 ChatGPT Sites 주소를 넣으면 ChatGPT에서 만든 대시보드로 바로 연결됩니다.
+이 워크플로는 GitHub 저장소의 분석 데이터를 갱신합니다. GitHub Pages 배포는 비공개 저장소의 Free 플랜에서 사용할 수 없으므로 포함하지 않습니다. About에는 위 ChatGPT Sites 주소를 넣으면 ChatGPT에서 만든 대시보드로 바로 연결됩니다.
 
-ChatGPT 전용 분석 링크가 발급되면 `chatgpt-agent/SETUP.md`에 따라 README 두 번째 배지와 `dashboard-config.js`의 `chatgptUrl`을 교체하세요. 새 GPT 생성 가능 여부는 계정/워크스페이스 정책에 따라 다릅니다.
+ChatGPT Sites는 GitHub Actions와 별도 서비스입니다. 이 워크플로가 수집한 최신 데이터를 Sites에 반영하려면 해당 Sites 프로젝트에서 별도로 갱신·게시해야 합니다. ChatGPT 전용 분석 링크가 발급되면 `chatgpt-agent/SETUP.md`에 따라 README 두 번째 배지와 `dashboard-config.js`의 `chatgptUrl`을 교체하세요. 새 GPT 생성 가능 여부는 계정/워크스페이스 정책에 따라 다릅니다.
 
 ## 로컬 실행
 
