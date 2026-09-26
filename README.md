@@ -16,13 +16,13 @@ LG에너지솔루션(종목코드 `373220`, DART 고유번호 `01515323`)의 202
 ## 5분 설정
 
 1. [OpenDART](https://opendart.fss.or.kr/)에서 API 인증키를 발급받습니다.
-2. ZIP으로 받은 경우 PowerShell에서 `./install_github_workflow.ps1`을 한 번 실행합니다. 숨김 파일 없는 ZIP을 위해 워크플로 템플릿은 `github-workflows` 폴더에 담았으며, 이 명령이 GitHub 표준 위치인 `.github/workflows`로 복사합니다.
-3. 이 폴더를 GitHub의 `jinawinwin/Dart_LGES` 저장소에 올립니다.
+2. GitHub Actions 워크플로는 `.github/workflows/update-and-deploy.yml`에 이미 포함되어 있으므로 별도 복사 과정이 필요 없습니다.
+3. 현재 저장소는 `HSC-Class01/JY_LGES`입니다. 로컬에서 새 사본을 올리는 경우에도 이 저장소를 원격으로 사용하세요.
 4. 저장소 **Settings → Secrets and variables → Actions**에 `DART_API_KEY` 이름으로 인증키를 등록합니다. 자세한 내용은 `API_KEY_SETUP.txt`를 확인하세요.
 5. **Settings → Pages → Build and deployment → Source**에서 **GitHub Actions**를 선택합니다.
 6. **Actions → Update OpenDART data and deploy dashboard → Run workflow**를 실행합니다.
 
-GitHub CLI에 로그인되어 있다면 위 2~3단계는 `./publish_to_github.ps1`로 자동 처리할 수 있습니다. 인증키는 보안을 위해 이 스크립트가 입력받지 않으며 GitHub Secret 화면에서 직접 등록합니다.
+GitHub CLI에 로그인되어 있다면 `./publish_to_github.ps1`로 로컬 사본을 `HSC-Class01/JY_LGES`에 올릴 수 있습니다. 인증키는 보안을 위해 이 스크립트가 입력받지 않으며 GitHub Secret 화면에서 직접 등록합니다.
 
 ## 저장소 About 링크
 
@@ -30,7 +30,7 @@ GitHub CLI에 로그인되어 있다면 위 2~3단계는 `./publish_to_github.ps
 
 `https://lges-financial-lens.snu-chatgpt-5678.chatgpt.site`
 
-GitHub Pages 주소(`https://jinawinwin.github.io/Dart_LGES/`)도 자동화 실행 후 사용할 수 있습니다. About에는 위 ChatGPT Sites 주소를 넣으면 ChatGPT에서 만든 대시보드로 바로 연결됩니다.
+GitHub Pages 주소(`https://hsc-class01.github.io/JY_LGES/`)도 자동화 실행 후 사용할 수 있습니다. About에는 위 ChatGPT Sites 주소를 넣으면 ChatGPT에서 만든 대시보드로 바로 연결됩니다.
 
 ChatGPT 전용 분석 링크가 발급되면 `chatgpt-agent/SETUP.md`에 따라 README 두 번째 배지와 `dashboard-config.js`의 `chatgptUrl`을 교체하세요. 새 GPT 생성 가능 여부는 계정/워크스페이스 정책에 따라 다릅니다.
 

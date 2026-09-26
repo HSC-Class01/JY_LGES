@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-$repo = "jinawinwin/Dart_LGES"
+$repo = "HSC-Class01/JY_LGES"
 $dashboard = "https://lges-financial-lens.snu-chatgpt-5678.chatgpt.site"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
