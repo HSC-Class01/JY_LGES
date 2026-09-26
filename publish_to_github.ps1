@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $repo = "HSC-Class01/JY_LGES"
-$dashboard = "https://lges-financial-lens.snu-chatgpt-5678.chatgpt.site"
+$dashboard = "https://hsc-class01.github.io/JY_LGES/"
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $root
 
@@ -30,3 +30,4 @@ if ($LASTEXITCODE -ne 0) {
 gh repo edit $repo --homepage $dashboard
 Write-Host "Published: https://github.com/$repo"
 Write-Host "Next: add DART_API_KEY under Settings > Secrets and variables > Actions."
+
