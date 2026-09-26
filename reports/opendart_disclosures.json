@@ -1,0 +1,76 @@
+{
+  "company": {
+    "name": "LG에너지솔루션",
+    "corp_code": "01515323",
+    "stock_code": "373220"
+  },
+  "source_rss": "https://dart.fss.or.kr/api/companyRSS.xml?crpCd=01515323",
+  "filings": [
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2020.12)",
+      "rcept_no": "20210317000676",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20210317",
+      "rm": "연"
+    },
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2021.12)",
+      "rcept_no": "20220315001026",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20220315",
+      "rm": "연"
+    },
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2022.12)",
+      "rcept_no": "20230315001342",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20230315",
+      "rm": "연"
+    },
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2023.12)",
+      "rcept_no": "20240314001110",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20240314",
+      "rm": "연"
+    },
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2024.12)",
+      "rcept_no": "20250312000405",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20250312",
+      "rm": "연"
+    },
+    {
+      "corp_code": "01515323",
+      "corp_name": "LG에너지솔루션",
+      "stock_code": "373220",
+      "corp_cls": "Y",
+      "report_nm": "사업보고서 (2025.12)",
+      "rcept_no": "20260312000217",
+      "flr_nm": "LG에너지솔루션",
+      "rcept_dt": "20260312",
+      "rm": "연"
+    }
+  ]
+}
