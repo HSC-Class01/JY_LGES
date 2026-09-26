@@ -1,4 +1,4 @@
-"""Sites 배포용 최소 정적 산출물을 dist 폴더에 준비한다."""
+"""GitHub Pages 배포용 최소 정적 산출물을 dist 폴더에 준비한다."""
 from pathlib import Path
 from shutil import copy2
 
@@ -9,3 +9,4 @@ copy2(ROOT / "index.html", DIST / "index.html")
 copy2(ROOT / "dashboard-config.js", DIST / "dashboard-config.js")
 copy2(ROOT / "data" / "dashboard.json", DIST / "data" / "dashboard.json")
 print(f"Site artifact prepared: {DIST}")
+
